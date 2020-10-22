@@ -7,6 +7,26 @@
 
 import SwiftUI
 
+struct PreferredColorSchemeModifier: ViewModifier {
+    var colorScheme: ColorScheme?
+
+    @ViewBuilder
+    func body(content: Content) -> some View {
+        if let colorScheme = colorScheme {
+            content
+                .environment(\.colorScheme, colorScheme)
+        } else {
+            content
+        }
+    }
+}
+
+extension View {
+    func applyPreferredColorScheme(_ colorScheme: ColorScheme?) -> some View {
+        self.modifier(PreferredColorSchemeModifier(colorScheme: colorScheme))
+    }
+}
+
 struct ContentView: View {
 //    private let lightColorScheme: ColorScheme = ColorScheme(UIUserInterfaceStyle.light)!
 //    private let darkColorScheme: ColorScheme = ColorScheme(UIUserInterfaceStyle.dark)!
@@ -52,7 +72,7 @@ struct ContentView: View {
             }
         }
         .listStyle(InsetGroupedListStyle())
-        .preferredColorScheme(preferredColorScheme)
+        .applyPreferredColorScheme(preferredColorScheme)
         .navigationBarTitle("ColorScheme Test")
     }
 
