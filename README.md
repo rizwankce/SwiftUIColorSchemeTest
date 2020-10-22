@@ -2,6 +2,15 @@
 
 Test project for SwiftUI's preferredColorScheme modifier
 
+> Update on October 2020
+> We found a possible fix for this issue. If we use view modifier to set colorscheme it's working as expected.
+>
+> Thanks to [Lin Junjie](https://github.com/junjie) for finding the solution and taking time to mark the findings as Github issue.
+>
+> I remember, we did test the workaround on beta 6 Xcode 12. My guess would be it got fixed before Xcode GM.
+>
+> Please check [this](https://github.com/rizwankce/SwiftUIColorSchemeTest/pull/2) PR for working solution
+
 ## Goal
 
 Trying to get in-app color scheme change based on user selection. Idea is app will give 3 options to choose from.
